@@ -34,6 +34,7 @@ public class FetchWeatherData extends AsyncTask<String, Void, List<DayTempInform
     private int mFetch;
     private CustomAdapter mCustomAdapter;
     private Activity mActivity;
+    private final String API_KEY = "2c767c3f7eae01a3802f126242e3a8d3";
 
     public FetchWeatherData(WeatherDataSourceHandler dbHandler, CustomAdapter customAdapter, Activity activity, int fetch) {
         super();
@@ -72,7 +73,7 @@ public class FetchWeatherData extends AsyncTask<String, Void, List<DayTempInform
         String forecastJsonStr = null;
         try {
             URL url = new URL("http://api.openweathermap.org/data/2.5/forecast/daily?q="
-                    + location + "&mode=json&units=metric&cnt=7");
+                    + location + "&mode=json&units=metric&cnt=7&APPID="+ API_KEY);
 
             // Create the request to OpenWeatherMap, and open the connection
             urlConnection = (HttpURLConnection) url.openConnection();
